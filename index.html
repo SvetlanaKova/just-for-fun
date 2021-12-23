@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <title>Frames object</title>
+ <style>
+*,
+*:after,
+*:before {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+ 
+/*стили выше добавлены только для этого примера, в реальном проекте используйте normalize.css\reset.css*/
+#module-running-button {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+  place-content: center;
+}
+#module-running-button .cell {
+  text-align: center;
+  min-height: 50px;
+  line-height: 50px;
+  min-width: 33.3%;
+  border: 1px solid red;
+}
+ </style>
+</head>
+<body>
+    <div id="module-running-button">
+        <div class="cell">
+          <button id="Forest_Gamp">фигушки</button>
+        </div>
+        <div class="cell">
+        </div>
+        <div class="cell">
+        </div>
+        <div class="cell">
+        </div>
+        <div class="cell">
+        </div>
+        <div class="cell">
+        </div>
+        <div class="cell">
+        </div>
+        <div class="cell">
+        </div>
+        <div class="cell">
+        </div>
+      </div>
+
+ <script>
+let opRunBt = {
+  field: document.getElementById(`module-running-button`),
+  events: {
+    mouseover: e => {
+      if (e.target.id === `Forest_Gamp`) {
+        let i, newI;
+        newI = i = [...opRunBt.field.children].indexOf(e.target.parentElement);
+        while(i === newI)
+          newI = Math.floor(Math.random() * opRunBt.field.children.length);
+        opRunBt.field.children[newI].appendChild(e.target);
+        newI = i = null;
+      }
+    },
+  },
+};
+ 
+opRunBt.field.addEventListener(`mouseover`, opRunBt.events.mouseover);
+ </script>
+
+</body>
+</html>
